@@ -6,8 +6,8 @@
 ssh userid@atlas9.nus.edu.sg
 ```
 
-- basic linux commands on HPC: https://nusit.nus.edu.sg/wp-content/uploads/2019/09/unixcom.pdf
-- Job Submission and Management using PBS Job Scheduler: https://bobcat.nus.edu.sg/hpc/HPC/pbs/index.html
+- basic linux commands on HPC: <https://nusit.nus.edu.sg/wp-content/uploads/2019/09/unixcom.pdf>
+- Job Submission and Management using PBS Job Scheduler: <https://bobcat.nus.edu.sg/hpc/HPC/pbs/index.html>
 
 # installing/loading packages
 
