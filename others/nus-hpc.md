@@ -1,5 +1,3 @@
-# NUS HPC
-
 [https://hpcportal2.nus.edu.sg/](https://hpcportal2.nus.edu.sg/)
 
 # login (in cmd)
