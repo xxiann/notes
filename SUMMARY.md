@@ -17,3 +17,4 @@
 ## others
 
 * [Page 2](others/page-2.md)
+* [NUS HPC](others/nus-hpc.md)
