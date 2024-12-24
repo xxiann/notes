@@ -31,6 +31,19 @@ close(pb)
 ## Saving files
 
 ```r
+# Save an object to a file
+saveRDS(object, file = "my_data.rds")
+# Restore the object
+readRDS(file = "my_data.rds")
+```
+
+```r
+# Saving on object in RData format
+save(data1, file = "data.RData")
+# Save multiple objects
+save(data1, data2, file = "data.RData")
+# To load the data again
+load("data.RData")
 ```
 
 
