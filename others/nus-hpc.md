@@ -1,14 +1,11 @@
-# nus hpc
-
-Created time: November 23, 2023 3:36 PM
-Last edited time: December 24, 2024 3:57 PM
+# NUS HPC
 
 [https://hpcportal2.nus.edu.sg/](https://hpcportal2.nus.edu.sg/)
 
 # login (in cmd)
 
 ```
-ssh xiaoxian@atlas9.nus.edu.sg
+ssh userid@atlas9.nus.edu.sg
 ```
 
 - basic linux commands on HPC: https://nusit.nus.edu.sg/wp-content/uploads/2019/09/unixcom.pdf
@@ -29,16 +26,16 @@ module load bismark
 
 ![Untitled](../.gitbook/assets/Untitled.png)
 
- Unix based user:
-• Can transfer files using scp command
-• Example for file upload from local to HPC Home folder
- `scp file1.txt username@atlas6:./file1.txt`
- Enter your NUS password when prompted.
-• Example for file download from HPC Home folder or workspace
+- Unix based user:
+- Can transfer files using scp command
+- Example for file upload from local to HPC Home folder
+- `scp file1.txt username@atlas6:./file1.txt`
+- Enter your NUS password when prompted.
+- Example for file download from HPC Home folder or workspace
 /hpctmp folder to local
- `scp username@atlas6:./file2.txt file2.txt`
- `scp username@atlas6:/hpctmp/username/file3.txt file3.txt`
- Enter your NUS password when prompted
+- `scp username@atlas6:./file2.txt file2.txt`
+- `scp username@atlas6:/hpctmp/username/file3.txt file3.txt`
+- Enter your NUS password when prompted
 
 [https://nusit.nus.edu.sg/services/hpc/data-processing-storage-management/high-performance-workspace-for-computational-clusters/](https://nusit.nus.edu.sg/services/hpc/data-processing-storage-management/high-performance-workspace-for-computational-clusters/)
 
@@ -120,7 +117,7 @@ qdel
 
 ```
 
-## ebenv software environment
+# ebenv software environment
 
 [https://bobcat.nus.edu.sg/hpc/support/ebenv/](https://bobcat.nus.edu.sg/hpc/support/ebenv/)
 
