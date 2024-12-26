@@ -10,11 +10,16 @@
 * [dplyr](r-basics/dplyr.md)
 * [colours](r-basics/colours.md)
 
+## bioinfo fn
+
+* [bulk RNAseq](bioinfo-fn/bulk-rnaseq.md)
+* [gene set enrichment analysis](bioinfo-fn/gene-set-enrichment-analysis.md)
+
 ## linux
 
-* [Page 1](linux/page-1.md)
+* [workflow for RNA-seq alignment](linux/page-1.md)
 
 ## others
 
-* [Page 2](others/page-2.md)
+* [renv](others/page-2.md)
 * [NUS HPC](others/nus-hpc.md)
