@@ -17,7 +17,7 @@
 
 ## linux
 
-* [workflow for RNA-seq alignment](linux/page-1.md)
+* [workflow for RNA-seq alignment](linux/workflow-rnaseq.md)
 
 ## others
 
