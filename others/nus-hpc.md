@@ -1,83 +1,83 @@
+# NUS HPC
+
 [https://hpcportal2.nus.edu.sg/](https://hpcportal2.nus.edu.sg/)
 
-# login (in cmd)
+## login (in cmd)
 
-```
+```bash
 ssh userid@atlas9.nus.edu.sg
 ```
 
-- basic linux commands on HPC: <https://nusit.nus.edu.sg/wp-content/uploads/2019/09/unixcom.pdf>
-- Job Submission and Management using PBS Job Scheduler: <https://bobcat.nus.edu.sg/hpc/HPC/pbs/index.html>
+* basic linux commands on HPC: [https://nusit.nus.edu.sg/wp-content/uploads/2019/09/unixcom.pdf](https://nusit.nus.edu.sg/wp-content/uploads/2019/09/unixcom.pdf)
+* Job Submission and Management using PBS Job Scheduler: [https://bobcat.nus.edu.sg/hpc/HPC/pbs/index.html](https://bobcat.nus.edu.sg/hpc/HPC/pbs/index.html)
 
-# installing/loading packages
+## installing/loading packages
 
 [https://nusit.nus.edu.sg/technus/getting-access-to-the-latest-scientific-software/](https://nusit.nus.edu.sg/technus/getting-access-to-the-latest-scientific-software/)
 
-```
+```bash
 module avail
 module load samtools
 module load bowtie2
 module load bismark
 ```
 
-# loading data
+## loading data
 
 ![Untitled](../.gitbook/assets/Untitled.png)
 
-- Unix based user:
-- Can transfer files using scp command
-- Example for file upload from local to HPC Home folder
-- `scp file1.txt username@atlas6:./file1.txt`
-- Enter your NUS password when prompted.
-- Example for file download from HPC Home folder or workspace
-/hpctmp folder to local
-- `scp username@atlas6:./file2.txt file2.txt`
-- `scp username@atlas6:/hpctmp/username/file3.txt file3.txt`
-- Enter your NUS password when prompted
+* Unix based user:
+* Can transfer files using scp command
+* Example for file upload from local to HPC Home folder
+* `scp file1.txt username@atlas6:./file1.txt`
+* Enter your NUS password when prompted.
+* Example for file download from HPC Home folder or workspace /hpctmp folder to local
+* `scp username@atlas6:./file2.txt file2.txt`
+* `scp username@atlas6:/hpctmp/username/file3.txt file3.txt`
+* Enter your NUS password when prompted
 
 [https://nusit.nus.edu.sg/services/hpc/data-processing-storage-management/high-performance-workspace-for-computational-clusters/](https://nusit.nus.edu.sg/services/hpc/data-processing-storage-management/high-performance-workspace-for-computational-clusters/)
 
-| **Directories** | **Feature** | **Disk Quota** | **Backup** | **Description** |
-| --- | --- | --- | --- | --- |
-| /home/svu/$USERID | Global | 20 GB | Snapshot | Home directory, U: drive on your PC. The longest snapshot backup is 10 days. |
-| /hpctmp | Local on All Atlas cluster | 500GB | No | Working directory. Files older than 60 days are purged automatically. |
-- check storage using `hpc s xiaoxian`
+| **Directories**   | **Feature**                | **Disk Quota** | **Backup** | **Description**                                                              |
+| ----------------- | -------------------------- | -------------- | ---------- | ---------------------------------------------------------------------------- |
+| /home/svu/$USERID | Global                     | 20 GB          | Snapshot   | Home directory, U: drive on your PC. The longest snapshot backup is 10 days. |
+| /hpctmp           | Local on All Atlas cluster | 500GB          | No         | Working directory. Files older than 60 days are purged automatically.        |
 
-### other storage
+* check storage using `hpc s xiaoxian`
 
-- scratch - only accessible on atlas9 and volta
-- [https://nusit.nus.edu.sg/technus/accelerating-deep-learning-apps/](https://nusit.nus.edu.sg/technus/accelerating-deep-learning-apps/)
-    
-    ![Untitled](../.gitbook/assets/Untitled%201.png)
-    
+#### other storage
 
-| **** | **Convenience** | **I/O Performance** | **Remarks** |
-| --- | --- | --- | --- |
-| **/hpctmp** | High | Standard | Accessible from all HPC clusters |
-| **/scratch2** | Standard | High | Accessible from atlas9 and Volta GPU cluster |
-| **/scratch** | Low | High | Accessible within Volta cluster node |
+* scratch - only accessible on atlas9 and volta
+*   [https://nusit.nus.edu.sg/technus/accelerating-deep-learning-apps/](https://nusit.nus.edu.sg/technus/accelerating-deep-learning-apps/)
 
-** take note
+    ![Untitled](<../.gitbook/assets/Untitled 1.png>)
 
-- running on /hpctmp and /scratch2 has slightly different environments?
-    - /hpctmp is the main mounted directory
-    - hence requires `automount` when using /scratch2
+| \*\*\*\*      | **Convenience** | **I/O Performance** | **Remarks**                                  |
+| ------------- | --------------- | ------------------- | -------------------------------------------- |
+| **/hpctmp**   | High            | Standard            | Accessible from all HPC clusters             |
+| **/scratch2** | Standard        | High                | Accessible from atlas9 and Volta GPU cluster |
+| **/scratch**  | Low             | High                | Accessible within Volta cluster node         |
 
-# writing job scripts
+\*\* take note
 
-- Types of hpc available
-    
-    ![Untitled](../.gitbook/assets/Untitled%202.png)
-    
-- steps
-    1. select the queue type and resources required
-    2. change to working dir `$PBS_O_WORKDIR` + get number of CPUs
-    3. source `modules.sh` to before loading required modules (check using `module avail`) + load required modules
-        1. to load modules not found, you have to download it to working home directory (e.g. `/hpctmp/xiaoxian/`) and build it beforehand `export PATH=$PWD/`     
-    4. go to working directory + other commands required for the process
-        1. logs are saved in directory after the job is done
+* running on /hpctmp and /scratch2 has slightly different environments?
+  * /hpctmp is the main mounted directory
+  * hence requires `automount` when using /scratch2
 
-```
+## writing job scripts
+
+*   Types of hpc available
+
+    ![Untitled](<../.gitbook/assets/Untitled 2.png>)
+* steps
+  1. select the queue type and resources required
+  2. change to working dir `$PBS_O_WORKDIR` + get number of CPUs
+  3. source `modules.sh` to before loading required modules (check using `module avail`) + load required modules
+     1. to load modules not found, you have to download it to working home directory (e.g. `/hpctmp/xiaoxian/`) and build it beforehand `export PATH=$PWD/`
+  4. go to working directory + other commands required for the process
+     1. logs are saved in directory after the job is done
+
+```bash
 #!/bin/bash
 #PBS -P bisulfide_seq
 #PBS -q parallel20
@@ -97,7 +97,7 @@ export PATH=$PWD/Bismark-0.24.2:${PATH}
 cd /hpctmp/xiaoxian/project/bisulfide
 ```
 
-# sending job
+## sending job
 
 [https://nusit.nus.edu.sg/technus/alphapulldown-and-pbs-job-arry-demo/](https://nusit.nus.edu.sg/technus/alphapulldown-and-pbs-job-arry-demo/)
 
@@ -105,7 +105,7 @@ cd /hpctmp/xiaoxian/project/bisulfide
 
 PBS stands for Portable Bash System
 
-```
+```bash
 # To check and list available queues on the HPC clusters
 qstat -q
 hpc pbs script parallel12 # checking script
@@ -115,7 +115,7 @@ qdel
 
 ```
 
-# ebenv software environment
+## ebenv software environment
 
 [https://bobcat.nus.edu.sg/hpc/support/ebenv/](https://bobcat.nus.edu.sg/hpc/support/ebenv/)
 
@@ -123,36 +123,35 @@ qdel
 source /app1/ebenv
 ```
 
-- guide
-    
-    Please be informed that deepTools is already installed in HPC system. You can source /app1/ebenv and then load the module deepTools/3.5.2-foss-2022a to use it. You can refer to below same command. For installing the python packages you can follow the python guide I attached. Let me know if you face any issue.
-    
-    @atlas7-c10 ~]$ bash
-    
-    @atlas7-c10 ~]$ source /app1/ebenv
-    
-    You are now using the "ebenv" software environment, see
-    
-    [https://bobcat.nus.edu.sg/hpc/support/ebenv](https://bobcat.nus.edu.sg/hpc/support/ebenv)
-    
-    for more information.
-    
-    @atlas7-c10 ~]$ module avail deepTools
-    
-    - -------------------------------------------------- /app1/ebapps/arches/flat/modules/bio ----------------------------------------------------
-    
-    deepTools/3.5.1-foss-2021b deepTools/3.5.2-foss-2022a
-    
-    @atlas7-c10 ~]$ module load deepTools/3.5.2-foss-2022a
-    
+*   guide
 
-## running R
+    Please be informed that deepTools is already installed in HPC system. You can source /app1/ebenv and then load the module deepTools/3.5.2-foss-2022a to use it. You can refer to below same command. For installing the python packages you can follow the python guide I attached. Let me know if you face any issue.
+
+    @atlas7-c10 \~]$ bash
+
+    @atlas7-c10 \~]$ source /app1/ebenv
+
+    You are now using the "ebenv" software environment, see
+
+    [https://bobcat.nus.edu.sg/hpc/support/ebenv](https://bobcat.nus.edu.sg/hpc/support/ebenv)
+
+    for more information.
+
+    @atlas7-c10 \~]$ module avail deepTools
+
+    * \-------------------------------------------------- /app1/ebapps/arches/flat/modules/bio ----------------------------------------------------
+
+    deepTools/3.5.1-foss-2021b deepTools/3.5.2-foss-2022a
+
+    @atlas7-c10 \~]$ module load deepTools/3.5.2-foss-2022a
+
+### running R
 
 [https://bobcat.nus.edu.sg/hpc/support/ebenv/howtos/r/](https://bobcat.nus.edu.sg/hpc/support/ebenv/howtos/r/)
 
-![image.png](../.gitbook/assets/image.png)
+![image.png](<../.gitbook/assets/image (1).png>)
 
-```powershell
+```bash
 # load env and desired R 
 source /app1/ebenv R-4.4.1
 
@@ -170,42 +169,42 @@ installed.packages()
 # https://re-docs.genomicsengland.co.uk/enable_rstudio/
 ```
 
-## R Studio Server
+### R Studio Server
 
 [https://www.hpc.iastate.edu/guides/containers/rstudio](https://www.hpc.iastate.edu/guides/containers/rstudio)
 
-Run `rstudio-server start`, then open a new tab on your preferred browser and type *localhost:8787*
+Run `rstudio-server start`, then open a new tab on your preferred browser and type _localhost:8787_
 
-```powershell
+```bash
 rstudio-server start
 ```
 
-# interactive session
+## interactive session
 
-- only available on certain clusters, e.g. atlas9-c01
+* only available on certain clusters, e.g. atlas9-c01
 
-```powershell
+```bash
 qsub -I -l select=1:ncpus=1:mem=12GB -l walltime=01:00:00 -P testing -q short
 ```
 
-# other
+## other
 
 [https://webserv-112.nus.edu.sg/login1.php](https://webserv-112.nus.edu.sg/login1.php)
 
 [https://nusit.nus.edu.sg/services/getting-started/introductory-guide-for-new-hpc-users/](https://nusit.nus.edu.sg/services/getting-started/introductory-guide-for-new-hpc-users/)
 
-[https://nusit.nus.edu.sg/wp-content/uploads/2019/09/DL_on_CPUs.pdf](https://nusit.nus.edu.sg/wp-content/uploads/2019/09/DL_on_CPUs.pdf)
+[https://nusit.nus.edu.sg/wp-content/uploads/2019/09/DL\_on\_CPUs.pdf](https://nusit.nus.edu.sg/wp-content/uploads/2019/09/DL_on_CPUs.pdf)
 
 tutorial
 
 [https://nusit.nus.edu.sg/wp-content/uploads/2019/09/Alphafold-on-NUS-HPC-GPU-Cluster.pdf](https://nusit.nus.edu.sg/wp-content/uploads/2019/09/Alphafold-on-NUS-HPC-GPU-Cluster.pdf)
 
-| **Hostname** | **Note** |
-| --- | --- |
+| **Hostname**          | **Note**                                                     |
+| --------------------- | ------------------------------------------------------------ |
 | atlas6-c01.nus.edu.sg | HP Xeon two sockets Hexa-Core 64-bit Linux cluster, CentOS 6 |
-| atlas7.nus.edu.sg | HP Xeon two sockets Hexa-Core 64-bit Linux cluster, CentOS 6 |
-| atlas8.nus.edu.sg | HP Xeon two sockets 12-Core 64-bit Linux cluster, CentOS 7.8 |
-| atlas9.nus.edu.sg | HP Xeon two sockets 20-Core 64-bit Linux cluster, CentOS 7.5 |
+| atlas7.nus.edu.sg     | HP Xeon two sockets Hexa-Core 64-bit Linux cluster, CentOS 6 |
+| atlas8.nus.edu.sg     | HP Xeon two sockets 12-Core 64-bit Linux cluster, CentOS 7.8 |
+| atlas9.nus.edu.sg     | HP Xeon two sockets 20-Core 64-bit Linux cluster, CentOS 7.5 |
 
 ```
 -------------------------------------------------- /app1/modules/centos6.3 --------------------------------------------------
