@@ -1,4 +1,4 @@
-# bulk RNAseq
+# bulk RNAseq in R
 
 ## loading libraries
 
@@ -8,7 +8,9 @@ require(tidyverse)
 
 ## GTF files to CSV function
 
-to obtain gene list containing ense
+to obtain gene list containing gene\_id, gene\_name, gene\_biotype, seqlvl, size as reference
+
+data format of GENCODE: [https://www.gencodegenes.org/pages/data\_format.html](https://www.gencodegenes.org/pages/data_format.html)
 
 ```r
 ## coded for GENCODE gtf files
@@ -24,7 +26,7 @@ gtf_to_csv <- function(gtffile, savefile){
   gene <- cbind(gene, exonic.gene.sizes[gene$gene_id,"size"]) 
   colnames(gene)[6] = "size"
 
-  #62754 -> 47496
+  #removing pseudogenes, artifacts and pseudoautosomal regions
   gene <- gene %>% 
     separate_wider_delim(cols = gene_id, delim = ".", names = c("ensembl_id", "version"), cols_remove = FALSE) %>%
     #gene[gene$seqlvl %in% seq(1,25),] %>%
@@ -36,6 +38,16 @@ gtf_to_csv <- function(gtffile, savefile){
   write.csv(gene, savefile, row.names = F)
   return(gene)
 }
+```
 
+
+
+## counts to TPM
+
+```r
+counts_to_tpm <- function(counts,len) {
+  x <- counts/len
+  return(t(t(x)*1e6/colSums(x)))
+}
 ```
 

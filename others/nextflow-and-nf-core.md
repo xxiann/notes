@@ -6,13 +6,13 @@ description: >-
 
 # nextflow & nf-core
 
-## Links
+## links
 
 * Nextflow: [https://www.nextflow.io/](https://www.nextflow.io/)
   * Tutorial: [https://training.nextflow.io/basic\_training/](https://training.nextflow.io/basic_training/)
 * nf-core: [https://nf-co.re/](https://nf-co.re/)
 
-## Operating nf-core offline in hpc
+## operating nf-core offline in hpc
 
 reference: [https://nf-co.re/docs/usage/offline](https://nf-co.re/docs/usage/offline)
 

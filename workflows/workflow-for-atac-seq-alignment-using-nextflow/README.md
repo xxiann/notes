@@ -6,17 +6,18 @@ description: Running nextflow on NUS HPC
 
 ## [Pipeline summary](https://nf-co.re/atacseq/2.1.2/)
 
-<figure><img src="../../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/nfcore-atac-pipeline.png" alt=""><figcaption></figcaption></figure>
 
 <details>
 
 <summary>Details</summary>
 
 1. Raw read QC ([`FastQC`](https://www.bioinformatics.babraham.ac.uk/projects/fastqc/))
-2. Adapter trimming ([`Trim Galore!`](https://www.bioinformatics.babraham.ac.uk/projects/trim_galore/))
-3. Choice of multiple aligners 1.([`BWA`](https://sourceforge.net/projects/bio-bwa/files/)) 2.([`Chromap`](https://github.com/haowenz/chromap)). **For paired-end reads only working until mapping steps, see** [**here**](https://github.com/nf-core/chipseq/issues/291) 3.([`Bowtie2`](http://bowtie-bio.sourceforge.net/bowtie2/index.shtml)) 4.([`STAR`](https://github.com/alexdobin/STAR))
-4. Mark duplicates ([`picard`](https://broadinstitute.github.io/picard/))
-5. Merge alignments from multiple libraries of the same sample ([`picard`](https://broadinstitute.github.io/picard/))
+2. ### 1. Setting up env in HPC
+3. Adapter trimming ([`Trim Galore!`](https://www.bioinformatics.babraham.ac.uk/projects/trim_galore/))
+4. Choice of multiple aligners 1.([`BWA`](https://sourceforge.net/projects/bio-bwa/files/)) 2.([`Chromap`](https://github.com/haowenz/chromap)). **For paired-end reads only working until mapping steps, see** [**here**](https://github.com/nf-core/chipseq/issues/291) 3.([`Bowtie2`](http://bowtie-bio.sourceforge.net/bowtie2/index.shtml)) 4.([`STAR`](https://github.com/alexdobin/STAR))
+5. Mark duplicates ([`picard`](https://broadinstitute.github.io/picard/))
+6. Merge alignments from multiple libraries of the same sample ([`picard`](https://broadinstitute.github.io/picard/))
    1. Re-mark duplicates ([`picard`](https://broadinstitute.github.io/picard/))
    2. Filtering to remove:
       * reads mapping to mitochondrial DNA ([`SAMtools`](https://sourceforge.net/projects/samtools/files/samtools/))
@@ -41,7 +42,7 @@ description: Running nextflow on NUS HPC
    10. Count reads in consensus peaks ([`featureCounts`](http://bioinf.wehi.edu.au/featureCounts/))
    11. Differential accessibility analysis, PCA and clustering ([`R`](https://www.r-project.org/), [`DESeq2`](https://bioconductor.org/packages/release/bioc/html/DESeq2.html))
    12. Generate ATAC-seq specific QC html report ([`ataqv`](https://github.com/ParkerLab/ataqv))
-6. Merge filtered alignments across replicates ([`picard`](https://broadinstitute.github.io/picard/))
+7. Merge filtered alignments across replicates ([`picard`](https://broadinstitute.github.io/picard/))
    1. Re-mark duplicates ([`picard`](https://broadinstitute.github.io/picard/))
    2. Remove duplicate reads ([`SAMtools`](https://sourceforge.net/projects/samtools/files/samtools/))
    3. Create normalised bigWig files scaled to 1 million mapped reads ([`BEDTools`](https://github.com/arq5x/bedtools2/), [`bedGraphToBigWig`](http://hgdownload.soe.ucsc.edu/admin/exe/))
@@ -50,18 +51,16 @@ description: Running nextflow on NUS HPC
    6. Create consensus peakset across all samples and create tabular file to aid in the filtering of the data ([`BEDTools`](https://github.com/arq5x/bedtools2/))
    7. Count reads in consensus peaks relative to merged library-level alignments ([`featureCounts`](http://bioinf.wehi.edu.au/featureCounts/))
    8. Differential accessibility analysis, PCA and clustering ([`R`](https://www.r-project.org/), [`DESeq2`](https://bioconductor.org/packages/release/bioc/html/DESeq2.html))
-7. Create IGV session file containing bigWig tracks, peaks and differential sites for data visualisation ([`IGV`](https://software.broadinstitute.org/software/igv/)).
-8. Present QC for raw read, alignment, peak-calling and differential accessibility results ([`ataqv`](https://github.com/ParkerLab/ataqv), [`MultiQC`](http://multiqc.info/), [`R`](https://www.r-project.org/))
+8. Create IGV session file containing bigWig tracks, peaks and differential sites for data visualisation ([`IGV`](https://software.broadinstitute.org/software/igv/)).
+9. Present QC for raw read, alignment, peak-calling and differential accessibility results ([`ataqv`](https://github.com/ParkerLab/ataqv), [`MultiQC`](http://multiqc.info/), [`R`](https://www.r-project.org/))
 
 </details>
 
 ## Running in HPC
 
-{% stepper %}
-{% step %}
-### Setting up env in HPC
+### 1. [making the pipeline offline](../../others/nextflow-and-nf-core.md#operating-nf-core-offline-in-hpc)&#x20;
 
-* [making the pipeline offline](../../others/nextflow-and-nf-core.md#operating-nf-core-offline-in-hpc) - downloads the nextflow pipeline and singularity containers used
+* downloads the nextflow pipeline and singularity containers used
 * obtain nextflow profile configuration <mark style="color:red;">`.config`</mark> file
 * obtaining/uploading the data/parameters required
 
@@ -76,12 +75,10 @@ unique-kmers.py -k 150 -R unique_count /mnt/c/Users/xiaox/Documents/temp/annotat
 # obtaining blacklist bed files
 wget -L https://raw.githubusercontent.com/Boyle-Lab/Blacklist/master/lists/hg38-blacklist.v2.bed.gz && gunzip hg38-blacklist.v2.bed.gz
 ```
-{% endstep %}
 
-{% step %}
-### Setting up nf-params file
+### 2. Setting up nf-params file
 
-Sets up the pararmeters and directories of the input/output for the pipeline
+* Sets up the pararmeters and directories of the input/output for the pipeline
 
 {% code title="nf-params.json" %}
 ```json
@@ -104,10 +101,8 @@ Sets up the pararmeters and directories of the input/output for the pipeline
 }
 ```
 {% endcode %}
-{% endstep %}
 
-{% step %}
-### Submit the job script
+### 3.  Submit the job script
 
 {% code title="job_hpc.txt" %}
 ```bash
@@ -138,8 +133,6 @@ cd /scratch2/username/atac
 /hpctmp/username/nextflow run /scratch2/username/nf-core-atacseq_2.1.2/2_1_2/ -c hpc.config -params-file "nf-params_ko.json" -w /scratch2/username/atac/work/ko/
 ```
 {% endcode %}
-{% endstep %}
-{% endstepper %}
 
 
 

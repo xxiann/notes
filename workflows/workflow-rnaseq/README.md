@@ -40,11 +40,9 @@ sudo apt install bowtie2
 sudo apt install subread
 ```
 
-{% stepper %}
-{% step %}
-## Quality control for fastq
+## 1. Quality control for fastq
 
-## 1a. Assessing the quality of reads
+### 1a. Assessing the quality of reads
 
 Running fastqc to generate QC report that con
 
@@ -59,7 +57,7 @@ mkdir fastqc
 fastqc -o fastqc -t 8 data/*.fq.gz
 ```
 
-## 1b. Trimming the reads
+### 1b. Trimming the reads
 
 There are programs like [Trimmomatic](http://www.usadellab.org/cms/?page=trimmomatic), [Cutadapt](https://cutadapt.readthedocs.io/en/stable/), [TrimGalore](https://github.com/FelixKrueger/TrimGalore). The main purpose is to trim low quality reads (usually Q<20) and remove adaptors.
 
@@ -72,18 +70,16 @@ TrimmomaticPE -threads 8 data/sample_1.fq.gz data/sample_2.fq.gz \
     ILLUMINACLIP:TruSeq3-PE-2.fa:2:30:10:2:True SLIDINGWINDOW:4:20 MINLEN:75
 ```
 
-
-{% endstep %}
-
-{% step %}
-## Obtaining genome annotations
+## 2. Obtaining genome annotations
 
 You can download your preferred genome annotations from the respective genome database. Preferably GRCH38/hg38 version.
 
 * ENSEMBL
 * GENCODE
 * UCSC
-* NCBI 'explain what .fasta and .gtf are'
+* NCBI&#x20;
+
+'explain what .fasta and .gtf are'
 
 ```bash
 # start off with your project folder
@@ -104,12 +100,10 @@ gunzip Homo_sapiens.GRCh38.dna.primary_assembly.fa.gz
 wget https://ftp.ensembl.org/pub/release-110/gtf/homo_sapiens/Homo_sapiens.GRCh38.110.gtf.gz 
 gunzip Homo_sapiens.GRCh38.110.gtf.gz
 ```
-{% endstep %}
 
-{% step %}
-## Gene level quantification
+## 3. Gene level quantification
 
-## 3a. Aligning using Bowtie2
+### 3a. Aligning using Bowtie2
 
 ```bash
 # start off with your project folder
@@ -121,7 +115,7 @@ mkdir results/counts
 threads=14
 ```
 
-### Building genome index
+#### Building genome index
 
 * format: bowtie2-build --threads \[n] -f \[path to annotation file] \[prefix to index path]
 
@@ -129,7 +123,7 @@ threads=14
 bowtie2-build --threads $threads -f annotation/GRCh38.primary_assembly.genome.fa annotation/GRCh38_index
 ```
 
-### Alignment
+#### Alignment
 
 ```bash
 r1=data/trimmed/sample_1.trim.fastq.gz
@@ -154,7 +148,7 @@ samtools sort -@ 6 \
 samtools index results/sample_sorted.bam
 ```
 
-## 3b. Counting using FeatureCount
+### 3b. Counting using FeatureCount
 
 ```
 ## running feature count; s 0 = unstranded
@@ -165,15 +159,9 @@ featureCounts -T $threads -s 0 results/sample.bam \
 
 #rm results/sample_sorted.bam
 ```
-{% endstep %}
 
-{% step %}
-## Downstream Analysis
+## 4. Downstream Analysis
 
 SNP? Splice junctions? - requires STAR alignment
 
 Differential Gene Expression Analysis
-
-
-{% endstep %}
-{% endstepper %}

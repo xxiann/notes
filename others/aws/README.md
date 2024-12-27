@@ -8,17 +8,13 @@ description: amazon web services
 
 ## accessing s3
 
-{% stepper %}
-{% step %}
-Run the AWS CLI command to list all the S3 buckets associated with the account in the region configured with **aws configure**.
+### 1. Run the AWS CLI command to list all the S3 buckets associated with the account in the region configured with **aws configure**.
 
 ```
 aws s3 ls
 ```
-{% endstep %}
 
-{% step %}
-Run AWS CLI commands.
+### 2. Run AWS CLI commands.
 
 **List the contents of the bucket**
 
@@ -47,32 +43,24 @@ To upload files we will use the AWS CLI **s3 cp** command.
 ```
 aws s3 cp ./{your-file} s3://{Bucket Name}/
 ```
-{% endstep %}
 
-{% step %}
-Verify the contents of the S3 bucket after the copy is completed via command line (below) or by using the AWS Console.
+### 3. Verify the contents of the S3 bucket after the copy is completed via command line (below) or by using the AWS Console.
 
 ```
 aws s3 ls s3://{Bucket Name}
 ```
-{% endstep %}
-{% endstepper %}
 
 ## mountpoint for amazon s3
 
 [user guide to installing mountpoint](https://docs.aws.amazon.com/AmazonS3/latest/userguide/mountpoint-installation.html#mountpoint.install.deb)
 
-{% stepper %}
-{% step %}
-### Identify your laptop's system configuration
+### 1. Identify your laptop's system configuration
 
 ```
 uname -a
 ```
-{% endstep %}
 
-{% step %}
-### Mount buckets with the `mount-s3` command
+### 2. Mount buckets with the `mount-s3` command
 
 ```
 mkdir *~/mnt*
@@ -89,24 +77,20 @@ After you mount your bucket locally, you can access the objects in your bucket t
 File system paths are split on the forward slash (`/`) character
 
 For more information, see Mountpoint for Amazon S3 [file system behavior](https://github.com/awslabs/mountpoint-s3/blob/main/doc/SEMANTICS.md) on GitHub. Customers that need richer file system semantics should consider other AWS file services, such as [Amazon Elastic File System (Amazon EFS)](https://aws.amazon.com/efs/)  or [Amazon FSx](https://aws.amazon.com/fsx/).
-{% endstep %}
 
-{% step %}
-### Unmount your bucket by using the `umount` command
+### 3. Unmount your bucket by using the `umount` command
 
 ```
 umount *~/mnt*
 ```
 
 This command unmounts your S3 bucket and exits Mountpoint
-{% endstep %}
-{% endstepper %}
+
+
 
 ## accessing ec2
 
-{% stepper %}
-{% step %}
-### [Create a new key pair](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/create-key-pairs.html)
+### 1. [Create a new key pair](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/create-key-pairs.html)
 
 Obtain a key to allow access to the ec2 instance from your own console
 
@@ -115,20 +99,16 @@ Setting the permissions of the [private key on linux](https://docs.aws.amazon.co
 ```
 chmod 400 key-pair-name.pem
 ```
-{% endstep %}
 
-{% step %}
-### Launch an EC2 instance
+### 2. Launch an EC2 instance
 
 In the upper-right corner of the AWS Management Console, confirm you are in the desired AWS region (e.g., Singapore)
 
 Click Launch instance. create your desired virtual machine and select the key pair the instance is associated to, and launch and start the instance
 
-<figure><img src="../../.gitbook/assets/image (1).png" alt=""><figcaption></figcaption></figure>
-{% endstep %}
+<figure><img src="../../.gitbook/assets/aws_instance.png" alt=""><figcaption></figcaption></figure>
 
-{% step %}
-### Login from local computer
+### 3. Login from local computer
 
 ```bash
 ssh -i /path/my-key-pair.pem ec2-user@<ip-address>
@@ -140,10 +120,8 @@ ssh -i /path/my-key-pair.pem ec2-user@<ip-address>
 ## example
 ssh -i "zb4171-lh.pem" ubuntu@ec2-54-254-217-177.ap-southeast-1.compute.amazonaws.com
 ```
-{% endstep %}
 
-{% step %}
-### Setting up environment
+### 4. Setting up environment
 
 Setting up an alignment environment
 
@@ -180,10 +158,8 @@ make STAR
 
 chmod +x STAR
 ```
-{% endstep %}
 
-{% step %}
-### Uploading/Downloading data
+### 5. Uploading/Downloading data
 
 [https://saturncloud.io/blog/how-to-use-scp-to-copy-a-file-to-amazon-ec2-instance/](https://saturncloud.io/blog/how-to-use-scp-to-copy-a-file-to-amazon-ec2-instance/)
 
@@ -194,10 +170,6 @@ scp -i yourkey.pem -r /Users/dir/ ubuntu@ec2-xxxx.amazonaws.com:/home/ubuntu
 ## copying from ec2 to local
 scp -i yourkey.pem -r ubuntu@ec2-xxxx.amazonaws.com:/home/ubuntu /Users/dir/
 ```
-
-
-{% endstep %}
-{% endstepper %}
 
 
 
