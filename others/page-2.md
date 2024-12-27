@@ -6,7 +6,7 @@ description: Setting up reproducible environments
 
 ## Setting up renv
 
-<figure><img src="../.gitbook/assets/image.png" alt="" width="459"><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (2).png" alt="" width="459"><figcaption></figcaption></figure>
 
 Requires you to set up a new Rproject for each project.
 
