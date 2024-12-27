@@ -24,7 +24,7 @@ module load bismark
 
 ## loading data
 
-![Untitled](../.gitbook/assets/Untitled.png)
+![Untitled](../.gitbook/assets/filezilla.png)
 
 * Unix based user:
 * Can transfer files using scp command
@@ -68,7 +68,7 @@ module load bismark
 
 *   Types of hpc available
 
-    ![Untitled](<../.gitbook/assets/Untitled 2.png>)
+    ![Untitled](../.gitbook/assets/atlas.png)
 * steps
   1. select the queue type and resources required
   2. change to working dir <mark style="color:red;">`$PBS_O_WORKDIR`</mark> + get number of CPUs
@@ -128,7 +128,7 @@ source /app1/ebenv
 
 [https://bobcat.nus.edu.sg/hpc/support/ebenv/howtos/r/](https://bobcat.nus.edu.sg/hpc/support/ebenv/howtos/r/)
 
-![image.png](<../.gitbook/assets/image (1) (1).png>)
+![image.png](../.gitbook/assets/r-versions.png)
 
 ```bash
 # load env and desired R 

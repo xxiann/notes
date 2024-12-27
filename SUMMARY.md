@@ -1,19 +1,23 @@
 # Table of contents
 
 * [Introduction](README.md)
-* [Page](page.md)
 
 ## r basics
 
-* [System functions](r-basics/system-functions.md)
-* [ggplot2](r-basics/ggplot2.md)
-* [dplyr](r-basics/dplyr.md)
-* [colours](r-basics/colours.md)
+* [useful resources](r-basics/useful-resources.md)
+* [system functions](r-basics/system-functions.md)
+* [statistical analysis](r-basics/statistical-analysis.md)
+* [data wrangling](r-basics/data-wrangling/README.md)
+  * [dplyr](r-basics/data-wrangling/dplyr.md)
+* [data visualisation](r-basics/data-visualisation/README.md)
+  * [ggplot2](r-basics/data-visualisation/ggplot2.md)
+  * [colours](r-basics/data-visualisation/colours.md)
 
 ## bioinfo fn
 
+* [useful resources](bioinfo-fn/useful-resources.md)
 * [bulk RNAseq in R](bioinfo-fn/bulk-rnaseq.md)
-* [gene set enrichment analysis](bioinfo-fn/gene-set-enrichment-analysis.md)
+* [gene set enrichment analysis in R](bioinfo-fn/gene-set-enrichment-analysis.md)
 * [HOMER annotation](bioinfo-fn/homer-annotation.md)
 
 ## workflows
@@ -27,7 +31,7 @@
 ## others
 
 * [nextflow & nf-core](others/nextflow-and-nf-core.md)
-* [renv](others/page-2.md)
+* [renv](others/renv.md)
 * [NUS HPC](others/nus-hpc.md)
 * [aws](others/aws/README.md)
   * [setting up aws environment](others/aws/setting-up-aws-environment.md)

@@ -4,9 +4,9 @@ description: Setting up reproducible environments
 
 # renv
 
-## Setting up renv
+## setting up renv
 
-<figure><img src="../.gitbook/assets/image (2).png" alt="" width="459"><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/renv-overview.png" alt="" width="459"><figcaption></figcaption></figure>
 
 Requires you to set up a new Rproject for each project.
 
@@ -31,14 +31,14 @@ renv::install("Seurat") # installs r packages from a variety of sources
   * `username/repo`: install package from GitHub
   * `bioc::pkg`: install `pkg` from Bioconductor.
 
-### Session info
+### session info
 
 ```r
 renv::snapshot()
 sessionInfo()
 ```
 
-## Updating packages <a href="#updating-packages" id="updating-packages"></a>
+## updating packages <a href="#updating-packages" id="updating-packages"></a>
 
 We recommend that you regularly (at least once a year) or if you’re making major changes to a project that you haven’t worked on for a while use [`renv::update()`](https://rstudio.github.io/renv/reference/update.html) to get the latest versions of all dependencies and renv.&#x20;
 
@@ -47,7 +47,7 @@ We recommend that you regularly (at least once a year) or if you’re making maj
 
 See [`renv::upgrade()`](https://rstudio.github.io/renv/reference/upgrade.html) if you ever want to upgrade just renv, or you need to install a development version from GitHub.
 
-## Uninstalling renv <a href="#uninstalling-renv" id="uninstalling-renv"></a>
+## uninstalling renv <a href="#uninstalling-renv" id="uninstalling-renv"></a>
 
 * To deactivate renv in a project, use [`renv::deactivate()`](https://rstudio.github.io/renv/reference/activate.html).&#x20;
   * This removes the renv auto-loader from the project `.Rprofile`, but doesn’t touch any other renv files used in the project. If you’d like to later re-activate renv, you can do so with [`renv::activate()`](https://rstudio.github.io/renv/reference/activate.html).
