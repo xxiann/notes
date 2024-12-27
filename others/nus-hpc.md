@@ -5,7 +5,7 @@
 ## login (in cmd)
 
 ```bash
-ssh userid@atlas9.nus.edu.sg
+ssh username@atlas9.nus.edu.sg
 ```
 
 * basic linux commands on HPC: [https://nusit.nus.edu.sg/wp-content/uploads/2019/09/unixcom.pdf](https://nusit.nus.edu.sg/wp-content/uploads/2019/09/unixcom.pdf)
@@ -29,11 +29,11 @@ module load bismark
 * Unix based user:
 * Can transfer files using scp command
 * Example for file upload from local to HPC Home folder
-* `scp file1.txt username@atlas6:./file1.txt`
+* <mark style="color:red;">`scp file1.txt username@atlas6:./file1.txt`</mark>
 * Enter your NUS password when prompted.
 * Example for file download from HPC Home folder or workspace /hpctmp folder to local
-* `scp username@atlas6:./file2.txt file2.txt`
-* `scp username@atlas6:/hpctmp/username/file3.txt file3.txt`
+* <mark style="color:red;">`scp username@atlas6:./file2.txt file2.txt`</mark>
+* <mark style="color:red;">`scp username@atlas6:/hpctmp/username/file3.txt file3.txt`</mark>
 * Enter your NUS password when prompted
 
 [https://nusit.nus.edu.sg/services/hpc/data-processing-storage-management/high-performance-workspace-for-computational-clusters/](https://nusit.nus.edu.sg/services/hpc/data-processing-storage-management/high-performance-workspace-for-computational-clusters/)
@@ -43,7 +43,7 @@ module load bismark
 | /home/svu/$USERID | Global                     | 20 GB          | Snapshot   | Home directory, U: drive on your PC. The longest snapshot backup is 10 days. |
 | /hpctmp           | Local on All Atlas cluster | 500GB          | No         | Working directory. Files older than 60 days are purged automatically.        |
 
-* check storage using `hpc s xiaoxian`
+* check storage using <mark style="color:red;">`hpc s username`</mark>
 
 #### other storage
 
@@ -62,7 +62,7 @@ module load bismark
 
 * running on /hpctmp and /scratch2 has slightly different environments?
   * /hpctmp is the main mounted directory
-  * hence requires `automount` when using /scratch2
+  * hence requires <mark style="color:red;">`automount`</mark> when using /scratch2
 
 ## writing job scripts
 
@@ -71,9 +71,9 @@ module load bismark
     ![Untitled](<../.gitbook/assets/Untitled 2.png>)
 * steps
   1. select the queue type and resources required
-  2. change to working dir `$PBS_O_WORKDIR` + get number of CPUs
-  3. source `modules.sh` to before loading required modules (check using `module avail`) + load required modules
-     1. to load modules not found, you have to download it to working home directory (e.g. `/hpctmp/xiaoxian/`) and build it beforehand `export PATH=$PWD/`
+  2. change to working dir <mark style="color:red;">`$PBS_O_WORKDIR`</mark> + get number of CPUs
+  3. source <mark style="color:red;">`modules.sh`</mark> to before loading required modules (check using <mark style="color:red;">`module avail`</mark>) + load required modules
+     1. to load modules not found, you have to download it to working home directory (e.g. <mark style="color:red;">`/hpctmp/username/`</mark>) and build it beforehand <mark style="color:red;">`export PATH=$PWD/`</mark>
   4. go to working directory + other commands required for the process
      1. logs are saved in directory after the job is done
 
@@ -91,10 +91,10 @@ source /etc/profile.d/rec_modules.sh
 module load samtools
 module load bowtie2
 
-cd /hpctmp/xiaoxian/
+cd /hpctmp/username/
 export PATH=$PWD/Bismark-0.24.2:${PATH}
 
-cd /hpctmp/xiaoxian/project/bisulfide
+cd /hpctmp/username/project/bisulfide
 ```
 
 ## sending job
@@ -112,7 +112,6 @@ hpc pbs script parallel12 # checking script
 
 qsub job1.txt / .pbs
 qdel
-
 ```
 
 ## ebenv software environment
@@ -123,33 +122,13 @@ qdel
 source /app1/ebenv
 ```
 
-*   guide
-
-    Please be informed that deepTools is already installed in HPC system. You can source /app1/ebenv and then load the module deepTools/3.5.2-foss-2022a to use it. You can refer to below same command. For installing the python packages you can follow the python guide I attached. Let me know if you face any issue.
-
-    @atlas7-c10 \~]$ bash
-
-    @atlas7-c10 \~]$ source /app1/ebenv
-
-    You are now using the "ebenv" software environment, see
-
-    [https://bobcat.nus.edu.sg/hpc/support/ebenv](https://bobcat.nus.edu.sg/hpc/support/ebenv)
-
-    for more information.
-
-    @atlas7-c10 \~]$ module avail deepTools
-
-    * \-------------------------------------------------- /app1/ebapps/arches/flat/modules/bio ----------------------------------------------------
-
-    deepTools/3.5.1-foss-2021b deepTools/3.5.2-foss-2022a
-
-    @atlas7-c10 \~]$ module load deepTools/3.5.2-foss-2022a
+* only found in certain cluster - e.g. atlas7, atlas9
 
 ### running R
 
 [https://bobcat.nus.edu.sg/hpc/support/ebenv/howtos/r/](https://bobcat.nus.edu.sg/hpc/support/ebenv/howtos/r/)
 
-![image.png](<../.gitbook/assets/image (1).png>)
+![image.png](<../.gitbook/assets/image (1) (1).png>)
 
 ```bash
 # load env and desired R 
