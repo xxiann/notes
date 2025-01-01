@@ -46,6 +46,8 @@ sudo apt install subread
 
 Running fastqc to generate QC report that con
 
+[FastQC - Checking quality of sequenced reads](https://gtk-teaching.github.io/NGS-intro/02-quality-control/index.html)
+
 * format: fastqc -o \[output dir] -t \[threads] seqfile 1.. seqfileN
 
 ```bash

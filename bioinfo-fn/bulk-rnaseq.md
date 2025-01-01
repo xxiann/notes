@@ -40,6 +40,12 @@ gtf_to_csv <- function(gtffile, savefile){
 }
 ```
 
+## gene count normalisation
+
+reference: [DGE\_workshop-hbctraining](https://hbctraining.github.io/DGE_workshop/lessons/02_DGE_count_normalization.html)
+
+normalization is essential for exploratory data analysis, visualization of data, and whenever you are exploring or comparing counts between or within samples such as in differential expression analysis
+
 
 
 ## counts to TPM

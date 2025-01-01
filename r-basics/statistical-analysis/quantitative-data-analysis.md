@@ -2,25 +2,7 @@
 description: with reference to NUS ST2137
 ---
 
-# statistical analysis
-
-## descriptive statistics
-
-
-
-## categorical
-
-### single categorical variable
-
-
-
-### two categorical variables: 2x2
-
-
-
-### r x c tables
-
-
+# quantitative data analysis
 
 ## quantitative
 
@@ -67,4 +49,3 @@ description: with reference to NUS ST2137
 
 
 ## Resampling
-
