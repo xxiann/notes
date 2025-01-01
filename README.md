@@ -15,5 +15,13 @@ Optional
 
 
 
+## Programming basics
+
+There are many free courses available online&#x20;
+
+Example: [https://www.youtube.com/watch?v=zOjov-2OZ0E](https://www.youtube.com/watch?v=zOjov-2OZ0E)&#x20;
+
+
+
 
 
