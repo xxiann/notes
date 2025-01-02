@@ -22,7 +22,8 @@
 
 * [useful resources](bioinfo-fn/useful-resources.md)
 * [bulk RNAseq in R](bioinfo-fn/bulk-rnaseq.md)
-* [differential gene expression analysis](bioinfo-fn/differential-gene-expression-analysis.md)
+* [differential gene expression analysis](bioinfo-fn/differential-gene-expression-analysis/README.md)
+  * [plot functions used in dge](bioinfo-fn/differential-gene-expression-analysis/plot-functions-used-in-dge.md)
 * [gene set enrichment analysis in R](bioinfo-fn/gene-set-enrichment-analysis.md)
 * [HOMER annotation](bioinfo-fn/homer-annotation.md)
 
