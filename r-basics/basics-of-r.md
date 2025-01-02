@@ -33,15 +33,15 @@ note: **R passes arguments by value**
 
 ### creating vectors
 
-* using c()
+* using `c()`
   * `number ← c(1,2,3,4,5)`
-* using numeric(), character(), logical() etc. - creates a vector with all its elements being 0
+* using `numeric()`, `character()`, `logical()` etc. - creates a vector with all its elements being 0
   * `number ← numeric(3)`
-* using rep(a,b) - replicate the item a by times
+* using `rep(a,b)` - replicate the item a by times
   * `number ← rep(2,3)`
   * `number ← rep(c(2,1),3:4)`
     * 2, 2, 2, 1, 1, 1, 1
-* using seq(from=a, to=b, by=c, length=d) # d = no of elements
+* using `seq(from=a, to=b, by=c, length=d)` # d = no of elements
   * `number ← seq(2, 10, 2)`
 
 ### creating matrix
@@ -81,7 +81,7 @@ note: **R passes arguments by value**
 
 #### to assess data frame
 
-* data ← read.table(…)
+* `data ← read.table(…)`
 * `attach(data)` - makes the variables in the df accessible by name within the R session
 * `data[r, c]`
 * using logical test, selects all the rows that fits this condition, `data[Gender == “M”, ]`
@@ -127,10 +127,10 @@ sink() # all the output are stored in the file
 ## packages
 
 * base : automatically installed
-* using install.packages()
-* load package = attach to search list - search() - R will go through the list whenever the fn is called
+* using `install.packages()`
+* load package = attach to search list - `search()` - R will go through the list whenever the fn is called
   * the functions are added into R session, and .GlobalEnv (user workspace)
-* require() - works similarly to library() but returns a warning msg when a library is not installed instead of an error
+* `require()` - works similarly to library() but returns a warning msg when a library is not installed instead of an error
   * good for loading libraries dynamically in a fn
 * library(ggplot2). library(”ggplot2”) will both work
 
@@ -158,7 +158,7 @@ sink() # all the output are stored in the file
 ## vapply
 
 * apply fn over list or vector, explicitly specify output format
-* vapply(X, FUN, FUN.VALUE, …, USE.NAMES = TRUE)
+* `vapply(X, FUN, FUN.VALUE, …, USE.NAMES = TRUE)`
   * FUN = function
   * FUN.VALUE = the return data type, e.g. numeric(1) - nchar() returns a single numerical value
 * prevents the case when sapply fails to convert the list into vector, returns warnings
@@ -197,7 +197,7 @@ sink() # all the output are stored in the file
     * `.*` - matches any character (.) zero or more times (\*)
     * `\\s`: Match a space. The "s" is normally a character, escaping it (`\\`) makes it a metacharacter.
     * `[0-9]+`: Match the numbers 0 to 9, at least once (+).
-    * `([0-9]+)`: The parentheses are used to make parts of the matching string available to define the replacement. The `\\\\1` in the replacement argument of `sub()` gets set to the string that is captured by the regular expression `[0-9]+`.
+    * `([0-9]+)`: The parentheses are used to make parts of the matching string available to define the replacement. The `\\1` in the replacement argument of `sub()` gets set to the string that is captured by the regular expression `[0-9]+`.
 
     ```r
     awards <- c("Won 1 Oscar.",
@@ -207,7 +207,7 @@ sink() # all the output are stored in the file
       "Nominated for 2 Golden Globes. 1 more win & 2 nominations.",
       "4 wins & 1 nomination.")
 
-    sub(".*\\\\s([0-9]+)\\\\snomination.*$", "\\\\1", awards)
+    sub(".*\\s([0-9]+)\\snomination.*$", "\\1", awards)
 
     [1] "Won 1 Oscar." "24"           "2"            "3"            "2"           
     [6] "1"
@@ -215,15 +215,15 @@ sink() # all the output are stored in the file
 
 ## time and dates
 
-* Sys.Date() - returns data in YYYY-MM-DD
-*   class = Data
+* `Sys.Date()` - returns data in YYYY-MM-DD
 
-    <figure><img src="../.gitbook/assets/image (13).png" alt="" width="287"><figcaption></figcaption></figure>
-* as.Date()
+<figure><img src="../.gitbook/assets/image (13).png" alt="" width="287"><figcaption></figcaption></figure>
+
+* `as.Date()`
 
 <figure><img src="../.gitbook/assets/image (14).png" alt="" width="563"><figcaption></figcaption></figure>
 
-* as.POSIXct
+* `as.POSIXct`
 * addition and subtraction of class-Date changes by days
 * time unit for POSIXct object is seconds
 * date object is a mroe advanced representation of the no of days since the first of 1 Jan in 1970
