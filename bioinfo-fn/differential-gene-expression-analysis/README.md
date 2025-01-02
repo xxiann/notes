@@ -23,6 +23,8 @@ library(rstatix)
 library(ggprism)
 library(ggfortify)
 library(RColorBrewer)
+
+## source("--.R") for pca_plot, volc.plot, dot.plot
 ```
 
 ## genome annotation file (GENCODE v44)
@@ -148,7 +150,7 @@ print(p)
 ggsave(paste0("plot/",folder,"PCA_before_analysis.tiff"), compression = "lzw", width = 15, height = 12, dpi = 300, units = "cm")
 ```
 
-<figure><img src="../.gitbook/assets/image (18).png" alt="" width="563"><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (18).png" alt="" width="563"><figcaption></figcaption></figure>
 
 ## params
 
@@ -196,7 +198,7 @@ dev.off()
 pheatmap(sampleDistMatrix)
 ```
 
-<figure><img src="../.gitbook/assets/image (20).png" alt="" width="563"><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (20).png" alt="" width="563"><figcaption></figcaption></figure>
 
 #### PCA after VST
 
@@ -208,7 +210,7 @@ plotPCA(object = vsd, intgroup = c("treatment")) +
 ggsave(paste0("plot/",folder,"PCA_vst_",name,".tiff"), compression = "lzw", width = 15, height = 12, dpi = 300, units = "cm")
 ```
 
-<figure><img src="../.gitbook/assets/image (21).png" alt="" width="563"><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (21).png" alt="" width="563"><figcaption></figcaption></figure>
 
 ### Differential Gene Analysis
 
@@ -263,7 +265,7 @@ ggsave(paste0("plot/",folder,"volc_plot_",comparison,".tiff"),plot=p1, width = 2
 show(p1)
 ```
 
-<figure><img src="../.gitbook/assets/image (22).png" alt="" width="563"><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (22).png" alt="" width="563"><figcaption></figcaption></figure>
 
 ### gsea
 
@@ -302,7 +304,7 @@ em2@result %>%
            savefile=paste0("plot/",folder,"HM_NES_plot_",comparison,".tiff"))
 ```
 
-<figure><img src="../.gitbook/assets/image (23).png" alt="" width="563"><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (23).png" alt="" width="563"><figcaption></figcaption></figure>
 
 ```{r}
 # running gsea
@@ -318,7 +320,7 @@ em2@result %>%
 
 ```
 
-<figure><img src="../.gitbook/assets/image (24).png" alt="" width="563"><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (24).png" alt="" width="563"><figcaption></figcaption></figure>
 
 ## obtaining the LFC of core enrichment gene (DEGs) of selected pathways
 
