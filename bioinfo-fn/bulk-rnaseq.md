@@ -29,7 +29,7 @@ gtf_to_csv <- function(gtffile, savefile){
   #removing pseudogenes, artifacts and pseudoautosomal regions
   gene <- gene %>% 
     separate_wider_delim(cols = gene_id, delim = ".", names = c("ensembl_id", "version"), cols_remove = FALSE) %>%
-    #gene[gene$seqlvl %in% seq(1,25),] %>%
+    #gene[gene$seqlvl %in% seq(1,25),] %>% # limiting to primary chromosomes
     filter(!grepl("pseudogene", gene_type),
           !grepl("_PAR_Y", gene_id),
           !gene_type %in% c("artifact")) %>%
