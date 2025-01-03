@@ -10,10 +10,15 @@ Batch effect refers technical variation and differences caused when genomic data
 
 ## visualising using pca
 
+Reference: \
+[https://liulab-dfci.github.io/RIMA/Preprocessing.html#batch-effect-removal](https://liulab-dfci.github.io/RIMA/Preprocessing.html#batch-effect-removal) [https://github.com/liulab-dfci/RIMA\_pipeline/blob/master/src/preprocess/pca.R](https://github.com/liulab-dfci/RIMA_pipeline/blob/master/src/preprocess/pca.R)
+
 ```r
 pca_plot <- function(exprTable, annot,title, Batch, label.hjust = 1.1, label.vjust = 0) {
   batch_n <- length(unique(as.character(annot[colnames(exprTable),Batch])))
+  
   print(paste("there are ", batch_n, " batches in your data"))
+  
   df <- cbind.data.frame(t(exprTable),batch = as.character(annot[colnames(exprTable),Batch]))
   pca_plot <- autoplot(prcomp(t(exprTable)), data = df, col = 'batch', size = 5, label = TRUE, label.label = colnames(exprTable), label.hjust = label.hjust, label.vjust = label.vjust)+ 
     labs(title=title)+ 
