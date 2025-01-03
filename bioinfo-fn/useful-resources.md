@@ -17,6 +17,12 @@
 
 
 
+## Griffith lab
+
+[https://rnabio.org/course/](https://rnabio.org/course/)
+
+
+
 ## Useful reading on functional analysis&#x20;
 
 [https://yulab-smu.top/contribution-knowledge-mining/ ](https://yulab-smu.top/contribution-knowledge-mining/)

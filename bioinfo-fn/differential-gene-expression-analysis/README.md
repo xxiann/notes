@@ -4,6 +4,8 @@ description: 'last update: 9 sept 24'
 
 # differential gene expression analysis
 
+documentation of DESeq2: [https://bioconductor.org/packages/devel/bioc/vignettes/DESeq2/inst/doc/DESeq2.html](https://bioconductor.org/packages/devel/bioc/vignettes/DESeq2/inst/doc/DESeq2.html)
+
 ## setting env
 
 ```r

@@ -92,7 +92,7 @@ tutorial video
   3. signed fold change \* -log10pvalue
 * highest ranked genes can be associated with the genes that are associated with the specific condition/treatment of the samples and those that are the bottom would be associated with the other condition/treatment
 
-<figure><img src="../.gitbook/assets/image.png" alt="" width="563"><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (2).png" alt="" width="563"><figcaption></figcaption></figure>
 
 * Filtering for significant pathways using FDR/p-adjusted&#x20;
   1. Sort by adjusted p-value < 0.25 (Recommended)

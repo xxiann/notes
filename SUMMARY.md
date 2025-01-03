@@ -21,10 +21,12 @@
 ## bioinfo fn
 
 * [useful resources](bioinfo-fn/useful-resources.md)
-* [bulk RNAseq in R](bioinfo-fn/bulk-rnaseq.md)
+* [bulk RNAseq in R](bioinfo-fn/bulk-rnaseq/README.md)
+  * [batch correction](bioinfo-fn/bulk-rnaseq/batch-correction.md)
 * [differential gene expression analysis](bioinfo-fn/differential-gene-expression-analysis/README.md)
   * [plot functions used in dge](bioinfo-fn/differential-gene-expression-analysis/plot-functions-used-in-dge.md)
-* [gene set enrichment analysis in R](bioinfo-fn/gene-set-enrichment-analysis.md)
+* [gene set enrichment analysis in R](bioinfo-fn/gene-set-enrichment-analysis/README.md)
+  * [single sample GSEA](bioinfo-fn/gene-set-enrichment-analysis/single-sample-gsea.md)
 * [HOMER annotation](bioinfo-fn/homer-annotation.md)
 
 ## workflows
