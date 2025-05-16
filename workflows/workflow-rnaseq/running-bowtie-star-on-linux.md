@@ -24,7 +24,7 @@ for r1 in $(ls data/*_1.trim.fastq.gz); do
     echo $r1 $r2
 
     echo running bowtie on $prefix
-    bowtie2 -p -t $threads \
+    bowtie2 -p $threads -t \
         -x annotation/GRCh38_index \
         -1 $r1 -2 $r2 \
         -S results/${prefix}.sam
