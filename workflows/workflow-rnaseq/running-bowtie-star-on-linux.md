@@ -31,16 +31,26 @@ for r1 in $(ls data/*_1.trim.fastq.gz); do
         -S results/${prefix}.sam
 
     # sam to bam
-    echo 'converting sam to bam'
-    samtools view -bS results/${prefix}.sam > results/${prefix}.bam
+    echo 'converting sam to sorted bam'
+    samtools view -@ $threads -bS results/${prefix}.sam > results/${prefix}.bam
 
     rm results/${prefix}.sam
 
-    samtools sort results/${prefix}.bam -o results/${prefix}_sorted.bam
+    samtools sort -@ $threads results/${prefix}.bam -o results/${prefix}_sorted.bam
 
     rm results/${prefix}.bam
+    
+    ## or all in one step; be caution of errors
+    #bowtie2 -p $threads -t \
+    #    -x annotation/GRCh38_index \
+    #    -1 $r1 -2 $r2 \
+    #    2> data/log/${prefix}_bowtie2.log | \
+    #    samtools view -@ $threads -bS | \
+    #    samtools sort -@ $threads -o results/${prefix}_sorted.bam
+    
+    # indexing bam files
+    samtools index -@ $threads results/${prefix}_sorted.bam
 
-    samtools index results/${prefix}_sorted.bam
 
 done
 

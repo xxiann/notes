@@ -79,7 +79,7 @@ You can download your preferred genome annotations from the respective genome da
 * ENSEMBL
 * GENCODE
 * UCSC
-* NCBI&#x20;
+* NCBI
 
 'explain what .fasta and .gtf are'
 
@@ -136,18 +136,18 @@ bowtie2 -p $threads -t \
     -x annotation/GRCh38_index \
     -1 $r1 -2 $r2 \
     2> data/log/sample_bowtie2.log \  # log files
-    | samtools view -t $threads -o results/sample.bam
+    | samtools view -@ $threads -o results/sample.bam
 
 # sorting bam file
-samtools sort -@ 6 \
+samtools sort -@ $threads \
     -o results/sample_sorted.bam
-    -T results/sample_sorted
+    -T results/sample_sorted # prefix for temporary files
     results/sample.bam
 
-##rm results/sample.bam
+## rm results/sample.bam
 
 # creating bam index file
-samtools index results/sample_sorted.bam
+samtools index -@ $threads results/sample_sorted.bam
 ```
 
 ### 3b. Counting using FeatureCount
