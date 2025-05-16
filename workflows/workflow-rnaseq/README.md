@@ -132,10 +132,10 @@ r1=data/trimmed/sample_1.trim.fastq.gz
 r2=data/trimmed/sample_2.trim.fastq.gz
 
 # running bowtie2
-bowtie2 -p -t $threads \
+bowtie2 -p $threads -t \
     -x annotation/GRCh38_index \
     -1 $r1 -2 $r2 \
-    2> data/log/sample_bowtie2.log \
+    2> data/log/sample_bowtie2.log \  # log files
     | samtools view -t $threads -o results/sample.bam
 
 # sorting bam file
