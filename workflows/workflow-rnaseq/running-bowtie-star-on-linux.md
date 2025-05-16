@@ -2,7 +2,8 @@
 
 ## bowtie
 
-reference: [https://rnnh.github.io/bioinfo-notebook/docs/bowtie2.html](https://rnnh.github.io/bioinfo-notebook/docs/bowtie2.html)
+reference: [https://rnnh.github.io/bioinfo-notebook/docs/bowtie2.html](https://rnnh.github.io/bioinfo-notebook/docs/bowtie2.html)\
+[https://bowtie-bio.sourceforge.net/bowtie2/manual.shtml](https://bowtie-bio.sourceforge.net/bowtie2/manual.shtml)
 
 <pre class="language-sh"><code class="lang-sh">## setting up env
 sudo apt install bowtie2
@@ -57,8 +58,6 @@ for file in $(find ./analysis/counts/ -name '*Counts.txt'); do
 ' > ${file}.tsv
 done
 </code></pre>
-
-
 
 ## STAR
 
