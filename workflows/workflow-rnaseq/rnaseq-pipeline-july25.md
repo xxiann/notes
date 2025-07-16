@@ -5,7 +5,11 @@ icon: ballot-check
 
 # RNAseq pipeline July'25
 
-You can download the precompiled binary version from [here](https://sourceforge.net/projects/subread/files/subread-2.1.1/) (for 64-bit Linux systems), unzip it before use `tar zxvf subread-x.x.x.tar.gz`
+You can download the precompiled binary version of subread from [here](https://sourceforge.net/projects/subread/files/subread-2.1.1/) (for 64-bit Linux systems) and upload onto the HPC, unzip it before use `tar zxvf subread-x.x.x.tar.gz`&#x20;
+
+
+
+Done using atlas9
 
 ```bash
 #!/bin/bash
