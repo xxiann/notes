@@ -33,6 +33,7 @@
 
 * [useful resources](workflows/useful-resources.md)
 * [workflow for RNA-seq alignment](workflows/workflow-rnaseq/README.md)
+  * [RNAseq pipeline July'25](workflows/workflow-rnaseq/rnaseq-pipeline-july25.md)
   * [running bowtie/STAR on linux](workflows/workflow-rnaseq/running-bowtie-star-on-linux.md)
 * [workflow for ATAC-seq alignment using nextflow](workflows/workflow-for-atac-seq-alignment-using-nextflow/README.md)
   * [nf 2.1.2 script](workflows/workflow-for-atac-seq-alignment-using-nextflow/nf-2.1.2-script.md)
