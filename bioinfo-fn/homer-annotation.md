@@ -31,6 +31,27 @@ perl /hpctmp/xiaoxian/homer/configureHomer.pl -install hg38
 
 ## to update 
 perl /hpctmp/xiaoxian/homer/configureHomer.pl -update
+
+# source code
+cd /hpctmp/xiaoxian/anno
+export PATH=$PATH:/hpctmp/xiaoxian/homer/bin/
+
+echo "annotating"
+
+for i in 'all'; do 
+    for file in ./${i}/*_merged_peaks.bed; do
+        name=$(echo $file|sed 's/_merged_peaks.bed//')
+        echo $file
+        annotatePeaks.pl \
+            $file \
+            GRCh38.primary_assembly.genome.fa \
+            -gid \
+            -gtf gencode.v43.primary_assembly.annotation.gtf \
+            -cpu 24 \
+            > ${name}.annotatePeaks.txt
+    done
+done
+
 ```
 
 
